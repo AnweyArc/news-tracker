@@ -1,5 +1,8 @@
-import "@/styles/globals.css";
+import '../styles/globals.css';
+import '../styles/newsform.css'; // Import custom wood-themed styles
 
-export default function App({ Component, pageProps }) {
+function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;
 }
+
+export default MyApp;

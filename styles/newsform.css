@@ -1,0 +1,116 @@
+/* Background color for the entire page */
+.bg-wood-bg {
+    background-color: #84240c; /* Dark wood background color */
+    color: #e7cfb4; /* Light color for text */
+    min-height: 100vh; /* Ensure full viewport height */
+  }
+  
+  /* Container for the main content */
+  .container {
+    background-color: #e7cfb4; /* Light wood color for content areas */
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+    max-width: 1200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ensure container does not exceed viewport width */
+    box-sizing: border-box; /* Include padding and border in container's total width and height */
+  }
+  
+  /* Heading above the search bar */
+  .search-heading {
+    text-align: center;
+    font-size: 2rem;
+    color: #84240c; /* Dark wood color for heading */
+    margin-bottom: 1rem;
+  }
+  
+  /* Search bar styling */
+  .search-bar {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: 2px solid #84240c; /* Dark wood color for border */
+    background-color: #fff; /* White background for the search bar */
+    color: #563232; /* Dark color for text */
+    width: 100%; /* Full width within container */
+    max-width: 500px; /* Set max-width to match the news items */
+    margin: 0 auto 1.5rem; /* Center the search bar */
+    display: block; /* Ensure block display for centering */
+    box-sizing: border-box; /* Include padding and border in search bar's total width and height */
+  }
+  
+  /* Placeholder text color */
+  .search-bar::placeholder {
+    color: #84240c; /* Dark wood color for placeholder text */
+  }
+  
+  /* News item styling */
+  .news-item {
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* White background for news items */
+    color: #563232; /* Darker text color */
+    margin-top: 1rem;
+    box-sizing: border-box; /* Include padding and border in news item’s total width and height */
+  }
+  
+  /* Header styling */
+  .news-item h2 {
+    color: #84240c; /* Dark wood color for headers */
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Paragraph styling */
+  .news-item p {
+    color: #563232; /* Darker text color */
+    margin-bottom: 1rem;
+  }
+  
+  /* Link styling */
+  .news-item a {
+    color: #84240c; /* Dark wood color for links */
+    text-decoration: none;
+  }
+  
+  .news-item a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .container {
+      padding: 1rem;
+      margin: 1rem;
+      max-width: 100%;
+    }
+  
+    .search-heading {
+      font-size: 1.5rem; /* Adjust heading size */
+      margin-bottom: 0.75rem;
+    }
+  
+    .search-bar {
+      max-width: 90%; /* Adjust max-width for smaller screens */
+    }
+  
+    .news-item {
+      padding: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .search-heading {
+      font-size: 1.25rem; /* Further adjust heading size */
+      margin-bottom: 0.5rem;
+    }
+  
+    .search-bar {
+      max-width: 100%; /* Full width on very small screens */
+    }
+  
+    .news-item {
+      padding: 0.75rem;
+    }
+  }
+  

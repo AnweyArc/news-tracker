@@ -1,23 +1,28 @@
 import React from 'react';
 
 const NewsList = ({ articles = [] }) => {
+  if (articles.length === 0) {
+    return <p className="text-center">No news available.</p>;
+  }
+
   return (
-    <div className="p-4">
-      {articles.length === 0 ? (
-        <p>No news available.</p>
-      ) : (
-        <ul className="space-y-4">
-          {articles.map((article) => (
-            <li key={article.title} className="bg-white shadow-md rounded-lg p-4">
-              <h2 className="text-xl font-bold">{article.title}</h2>
-              <p>{article.description}</p>
-              <a href={article.url} className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">
-                Read more
-              </a>
-            </li>
-          ))}
-        </ul>
-      )}
+    <div className="container p-6">
+      <ul className="space-y-4">
+        {articles.map((article) => (
+          <li key={article.url} className="news-item bg-ffc18c text-563232">
+            <h2 className="text-2xl font-bold mb-2">{article.title}</h2>
+            <p className="mb-4">{article.description}</p>
+            <a
+              href={article.url}
+              className="hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Read more
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

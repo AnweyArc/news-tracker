@@ -1,3 +1,27 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+/* Apply the background color to the entire website */
+body {
+    background-color: #84240c; /* Dark wood color for the entire background */
+    color: #e7cfb4; /* Light color for text to ensure readability */
+    font-family: Arial, sans-serif; /* Choose a legible font */
+  }
+  
+  /* Ensure content areas are visible against the dark background */
+  .container {
+    background-color: #ffc18c; /* Light wood color for content areas */
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+    max-width: 1200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Ensure links are readable */
+  a {
+    color: #563232; /* Dark color for links to stand out */
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
