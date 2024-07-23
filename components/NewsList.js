@@ -11,6 +11,7 @@ const NewsList = ({ articles = [] }) => {
         {articles.map((article) => (
           <li key={article.url} className="news-item bg-ffc18c text-563232">
             <h2 className="text-2xl font-bold mb-2">{article.title}</h2>
+            <p className="news-date">Posted on: {new Date(article.publishedAt).toLocaleDateString()}</p>
             <p className="mb-4">{article.description}</p>
             <a
               href={article.url}
