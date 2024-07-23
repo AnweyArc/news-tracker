@@ -3,15 +3,24 @@ import NewsList from '../components/NewsList';
 
 const Home = ({ initialArticles }) => {
   const [articles, setArticles] = useState(initialArticles || []);
+  const [query, setQuery] = useState('');
 
-  const fetchNews = async (query) => {
-    if (!query) return; // Avoid making requests with empty queries
+  // Fetch news articles based on the search query
+  const fetchNews = async (searchQuery) => {
+    if (!searchQuery) return; // Avoid making requests with empty queries
 
-    const res = await fetch(`/api/news?query=${query}`);
+    const res = await fetch(`/api/news?query=${searchQuery}`);
     const data = await res.json();
-    
-    // Filter out articles that are not in the fetched results
-    setArticles(data.articles || []);
+
+    // Filter out articles that are marked as [removed]
+    const filteredArticles = (data.articles || []).filter(article => !article.title.includes('[removed]'));
+
+    setArticles(filteredArticles);
+  };
+
+  // Fetch initial news or refresh news with the current query
+  const refreshNews = () => {
+    fetchNews(query);
   };
 
   return (
@@ -23,9 +32,18 @@ const Home = ({ initialArticles }) => {
           <input
             type="text"
             placeholder="Search for news..."
-            onChange={(e) => fetchNews(e.target.value)}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyPress={(e) => { if (e.key === 'Enter') fetchNews(query); }}
             className="search-bar"
           />
+          <div className="button-container mt-4">
+            <button
+              onClick={refreshNews}
+              className="refresh-button"
+            >
+              <i className="fas fa-sync-alt"></i> {/* Font Awesome refresh icon */}
+            </button>
+          </div>
         </div>
         <NewsList articles={articles} />
       </div>

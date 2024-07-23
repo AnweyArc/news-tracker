@@ -113,4 +113,75 @@
       padding: 0.75rem;
     }
   }
+/* Container for the refresh button */
+.button-container {
+    text-align: center; /* Center the button horizontally */
+  }
+  
+  /* Refresh button styling */
+  .refresh-button {
+    background-color: transparent; /* No background color */
+    border: none;
+    color: #84240c; /* Dark wood color for icon */
+    font-size: 1.5rem; /* Size of the icon */
+    cursor: pointer;
+    transition: color 0.3s ease; /* Smooth color transition */
+  }
+  
+  .refresh-button:hover {
+    color: #563232; /* Darker wood color for hover effect */
+  }
+  
+  .refresh-button:focus {
+    outline: none; /* Remove outline on focus */
+  }
+  
+  /* Navbar styling */
+nav {
+  background-color: #ffc18c; /* Light wood color for navbar background */
+  border-bottom: 2px solid #84240c; /* Dark wood color for border */
+}
+
+/* Language button styling */
+nav button {
+  background-color: #ffc18c; /* Light wood color */
+  color: #563232; /* Dark wood color */
+}
+
+nav button:hover {
+  background-color: #e7cfb4; /* Slightly lighter wood color on hover */
+}
+
+nav button.bg-wood-dark {
+  background-color: #84240c; /* Dark wood color */
+  color: #fff; /* White text for selected state */
+}
+
+/* Container adjustments */
+.container {
+  background-color: #e7cfb4; /* Light wood color for content areas */
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin: 1.5rem auto;
+  max-width: 1200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    margin: 1rem;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-heading {
+    font-size: 1.25rem; /* Further adjust heading size */
+    margin-bottom: 0.5rem;
+  }
+}
+
+  
   
