@@ -182,6 +182,69 @@ nav button.bg-wood-dark {
     margin-bottom: 0.5rem;
   }
 }
+nav {
+    background-color: #ffc18c; /* Light wood color for navbar background */
+    border-bottom: 2px solid #84240c; /* Dark wood color for border */
+    padding: 0.5rem 1rem; /* Padding for better spacing */
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    gap: 1rem; /* Space between navbar items */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav button {
+    background-color: #ffc18c; /* Light wood color */
+    color: #563232; /* Dark wood color */
+    border: 2px solid transparent; /* Border for button effect */
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+nav button:hover {
+    background-color: #e7cfb4; /* Slightly lighter wood color on hover */
+    color: #84240c; /* Dark wood color for text on hover */
+    border-color: #84240c; /* Dark wood color for border on hover */
+}
+
+nav button.bg-wood-dark {
+    background-color: #84240c; /* Dark wood color */
+    color: #fff; /* White text for selected state */
+    border-color: #84240c; /* Dark wood color for border */
+}
+
+/* Adjusting the navbar and container for responsiveness */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        gap: 0.5rem; /* Reduce gap between items */
+    }
+
+    nav button {
+        padding: 0.5rem; /* Adjust padding for smaller screens */
+        font-size: 0.9rem; /* Slightly smaller font size */
+    }
+}
+
+@media (max-width: 480px) {
+    nav button {
+        font-size: 0.8rem; /* Further reduce font size */
+    }
+}
 
   
   

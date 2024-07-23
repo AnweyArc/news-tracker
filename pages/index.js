@@ -4,12 +4,16 @@ import NewsList from '../components/NewsList';
 const Home = ({ initialArticles }) => {
   const [articles, setArticles] = useState(initialArticles || []);
   const [query, setQuery] = useState('');
+  const [selectedLanguage, setSelectedLanguage] = useState('');
 
-  // Fetch news articles based on the search query
+  // Fetch news articles based on the search query and selected language
   const fetchNews = async (searchQuery) => {
-    if (!searchQuery) return; // Avoid making requests with empty queries
+    let url = `/api/news?query=${searchQuery}`;
+    if (selectedLanguage) {
+      url += `&language=${selectedLanguage}`;
+    }
 
-    const res = await fetch(`/api/news?query=${searchQuery}`);
+    const res = await fetch(url);
     const data = await res.json();
 
     // Filter out articles that are marked as [removed]
@@ -18,14 +22,48 @@ const Home = ({ initialArticles }) => {
     setArticles(filteredArticles);
   };
 
-  // Fetch initial news or refresh news with the current query
+  // Handle language selection
+  const handleLanguageChange = (language) => {
+    setSelectedLanguage(language);
+    fetchNews(query);
+  };
+
+  // Refresh news with the current query and selected language
   const refreshNews = () => {
     fetchNews(query);
   };
 
   return (
-    <div className="bg-wood-bg min-h-screen flex items-center justify-center">
-      <div className="container">
+    <div className="bg-wood-bg min-h-screen flex flex-col">
+      {/* Navbar */}
+      <nav>
+        <ul>
+          {['en', 'tl', 'ja', 'es'].map(lang => (
+            <li key={lang}>
+              <button
+                onClick={() => handleLanguageChange(lang)}
+                className={`py-2 px-4 rounded ${selectedLanguage === lang ? 'bg-wood-dark text-white' : ''}`}
+              >
+                {lang === 'en' && 'English'}
+                {lang === 'tl' && 'Tagalog'}
+                {lang === 'ja' && 'Japanese'}
+                {lang === 'es' && 'Español'}
+              </button>
+            </li>
+          ))}
+          <li>
+            <button
+              onClick={() => handleLanguageChange('')}
+              className={`py-2 px-4 rounded ${!selectedLanguage ? 'bg-wood-dark text-white' : ''}`}
+            >
+              All News
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      {/* Main Content */}
+      <div className="container mx-auto p-4 flex-grow">
         <h1 className="text-4xl font-bold mb-4 text-center">News Tracker</h1>
         <div className="text-center">
           <h2 className="search-heading">News Paper</h2>
@@ -33,7 +71,7 @@ const Home = ({ initialArticles }) => {
             type="text"
             placeholder="Search for news..."
             onChange={(e) => setQuery(e.target.value)}
-            onKeyPress={(e) => { if (e.key === 'Enter') fetchNews(query); }}
+            onKeyPress={(e) => { if (e.key === 'Enter') fetchNews(e.target.value); }}
             className="search-bar"
           />
           <div className="button-container mt-4">
