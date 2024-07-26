@@ -20,6 +20,9 @@ const NewsList = ({ articles = [] }) => {
             ) : (
               <p className="news-summary mb-4">Summary not available.</p>
             )}
+            <p className="news-provider text-gray-700 text-sm">
+              - by: {article.source?.name || 'Unknown'}
+            </p>
             <a
               href={article.url}
               className="hover:underline"
