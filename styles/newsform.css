@@ -247,8 +247,13 @@ nav button.bg-wood-dark {
 }
 /* News date styling */
 .news-date {
-  color: gray;
+  color: rgb(153, 153, 153);
   font-size: 0.9rem; /* Smaller font size */
   font-style: italic; /* Italicized text */
   margin-bottom: 0.5rem; /* Space below the date */
+}
+.news-summary {
+  color: #563232; /* Same color as the text */
+  font-size: 1rem; /* Default text size */
+  margin-bottom: 1rem; /* Spacing below the summary */
 }

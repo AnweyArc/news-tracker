@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import NewsList from '../components/NewsList';
 
 const Home = ({ initialArticles }) => {
@@ -16,7 +16,10 @@ const Home = ({ initialArticles }) => {
       // Filter out articles that are marked as [removed]
       const filteredArticles = (data.articles || []).filter(article => !article.title.includes('[removed]'));
 
-      setArticles(filteredArticles);
+      // Sort articles by publishedAt date in descending order
+      const sortedArticles = filteredArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+
+      setArticles(sortedArticles);
     } catch (error) {
       console.error('Failed to fetch news:', error);
     }
@@ -26,6 +29,10 @@ const Home = ({ initialArticles }) => {
   const refreshNews = () => {
     fetchNews(query);
   };
+
+  useEffect(() => {
+    setArticles(initialArticles); // Ensuring client and server have the same initial data
+  }, [initialArticles]);
 
   return (
     <div className="bg-wood-bg min-h-screen flex items-center justify-center">
@@ -63,9 +70,12 @@ export async function getServerSideProps() {
     // Filter out articles that are marked as [removed]
     const filteredArticles = (data.articles || []).filter(article => !article.title.includes('[removed]'));
 
+    // Sort articles by publishedAt date in descending order
+    const sortedArticles = filteredArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+
     return {
       props: {
-        initialArticles: filteredArticles, // Ensure initialArticles is an array
+        initialArticles: sortedArticles, // Ensure initialArticles is an array
       },
     };
   } catch (error) {
